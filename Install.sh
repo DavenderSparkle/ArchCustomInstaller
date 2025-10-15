@@ -7,7 +7,7 @@ cfdisk
 mkfs.fat -F32 /dev/sda1
 mkswap /dev/sda2
 swapon
-mkfs.ext /dev/sda4
+mkfs.ext4 /dev/sda4
 
 # Mounting Disks
 mount /dev/sda4 /mnt
