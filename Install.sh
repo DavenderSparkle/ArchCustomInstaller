@@ -20,3 +20,5 @@ genfstab -U /mnt >> /mnt/etc/fstab
 pacstrap /mnt linux linux-firmware networkmanager wpa_supplicant base base-devel
 # Entering chroot
 arch-chroot /mnt
+
+## TODO: Selector, so it works with BOTH Legacy and UEFI BIOS
