@@ -8,7 +8,11 @@ To be honest, the main reason I prefer manual instalallation over `archinstall` 
 ## How to use
 > [!IMPORTANT]
 > This scripts are currently intended for SATA drives, feel free to modify them to NVME/VDB format acording to your needs  
-> Soon (or later) I'll try to modify it to support more drive types
+> Soon (or later) I'll try to modify it to support more drive types  
+
+> [!CAUTION]
+> It only works with fresh installs (srry)
+> DualBoots could be done after installing with this first  
 
 ### Booting ArchLinux.iso
 By default, the Arch Linux environment does not come with Git installed. To install it, run:
