@@ -12,16 +12,20 @@ By default, the Arch Linux environment does not come with Git installed. To inst
 pacman -Sy git
 ```
 
-Once Git is installed, clone this repository on `/mnt`:
+Once Git is installed, clone this repository:
 ```
-cd /mnt
 git clone https://github.com/DavenderSparkle/ArchCustomInstaller
-cd /mnt/ArchCustomInstaller
 ```
 
 ### Installation (Install.sh)
 
-1. Execute `./Install.sh`  
+1. Execute  
+```
+./Install.sh <bios>
+``` 
+If parameter is not provided, it will be requested later
+>  `<bios>`: The kind of bios our system uses: 1) Legacy 2) UEFI
+
 2. Partition the disk as you like, usually it looks like this depending on the BIOS type:
 
 | Name          | Size   | Legacy                        | UEFI                                 |
@@ -48,13 +52,12 @@ Run the following command:
 ```
 ./PostInstall.sh <username> <language> <hostname> <bios>
 ```
+If parameters are not provided or are incorrect, they will be requested later  
 ###### Parameters:
 >  `<username>`: The name of the user fot the operating system  
 >  `<language>`: The preferred language for the system environment (e.g: us, es)  
 >  `<hostname>`: The hostname you wish to assign to your system  
 >  `<bios>`: The kind of bios our system uses: 1) Legacy 2) UEFI
-
-If parameters are not provided or are incorrect, they will be requested later  
 
 Order of Execution:
 1. **Automatic user creation**: The user will be created with a home directory and added to `%wheel` group for `sudo` access
