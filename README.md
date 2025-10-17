@@ -7,7 +7,7 @@ To be honest, the main reason I prefer manual instalallation over `archinstall` 
 
 ## How to use
 > [!IMPORTANT]
-> This scripts are currently intended for SATA drives, feel free to modify them to modify them to match NVME/VDB format acording to your needs  
+> This scripts are currently intended for SATA drives, feel free to modify them to NVME/VDB format acording to your needs  
 > Soon (or later) I'll try to modify it to support more drive types
 
 ### Booting ArchLinux.iso
