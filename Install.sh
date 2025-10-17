@@ -1,10 +1,16 @@
 #!/bin/bash
 
+BIOS=$1
+
 ## Manually Partition Disk
 cfdisk
 
 ## Ask User what kind of bios
-BIOS=0
+
+if [ -z $BIOS ];
+then
+    BIOS=0
+fi
 while [ $BIOS -ne 1 ] && [ $BIOS -ne 2 ];
 do
     echo "Is your BIOS Legacy or UEFI?"
@@ -25,7 +31,7 @@ case $BIOS in
     ## UEFI
     mkfs.ext4 /dev/sda3;;
 *)
-    echo "Something went really wrong";;
+    echo "MKFS: Something went really wrong";;
 esac
 
 ## Mounting Disks
@@ -43,10 +49,14 @@ case $BIOS in
     mount /dev/sda1 /mnt/boot/efi
     ;;
 *)
-    echo "Something went really wrong";;
+    echo "MOUNT: Something went really wrong";;
 esac
 mkdir /mnt/etc
 genfstab -U /mnt >> /mnt/etc/fstab
+
+## Safeguard ArchCustomInstaller so there is no need to clone again
+mkdir /mnt/ArchCustomInstaller
+mount --bind /root/ArchCustomInstaller /mnt/ArchCustomInstaller
 
 ## Install Packages
 pacstrap /mnt linux linux-firmware networkmanager wpa_supplicant base base-devel
