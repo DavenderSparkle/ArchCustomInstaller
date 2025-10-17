@@ -23,7 +23,10 @@ pacman -Sy git
 Once Git is installed, clone this repository:
 ```
 git clone https://github.com/DavenderSparkle/ArchCustomInstaller
+cd ArchCustomInstaller
+chmod +x Install.sh PostInstall.sh
 ```
+###### chmod necessary because it cannot execute without it
 
 ### Installation (Install.sh)
 
