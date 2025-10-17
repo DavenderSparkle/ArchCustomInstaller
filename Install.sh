@@ -1,9 +1,28 @@
 #!/bin/bash
 
 BIOS=$1
+isCorrect=""
 
-## Manually Partition Disk
 cfdisk
+## Manually Partition Disk
+while [ -z $isCorrect ];
+do
+    echo "Are the partitions correct (y/n)"
+    read isCorrect
+    case $isCorrect in
+    y|Y)
+        ;;
+    n|N)
+        echo "Reopening cfdisk to fix partitions"
+        cfdisk
+        isCorrect=""
+        ;;
+    *)  
+        echo "Invalid parameter"
+        isCorrect=""
+        ;;
+    esac
+done
 
 ## Ask User what kind of bios
 
