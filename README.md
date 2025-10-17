@@ -1,9 +1,9 @@
 # Arch Semi-Auto Installation Scripts
 
-These scripts were created for personal use to automate the process of manually installing Arch Linux on both virtual and physicam machines.
+These scripts were created for personal use to automate the process of manually installing Arch Linux on both virtual and physical machines.
 While I'm aware that the `archinstall` tool can provide a fully automated installation, it does not align with my preferences. Manualy installation offers control and customizacion over the process.
 
-To be honest, the main reason i prefer manual over `archinstall` is that the first time i tried it, didn't install few key components and left VM without internet connection.
+To be honest, the main reason I prefer manual instalallation over `archinstall` is that the first time I tried it, didn't install few key components and left VM without internet connection.
 
 ## How to use
 ### Booting ArchLinux.iso
@@ -12,16 +12,16 @@ By default, the Arch Linux environment does not come with Git installed. To inst
 pacman -Sy git
 ```
 
-Once Git is installed, clone this repository:
+Once Git is installed, clone this repository on `/mnt`:
 ```
+cd /mnt
 git clone https://github.com/DavenderSparkle/ArchCustomInstaller
+cd /mnt/ArchCustomInstaller
 ```
-
-`cd` into the repository
 
 ### Installation (Install.sh)
 
-1. Execute `.Install.sh`  
+1. Execute `./Install.sh`  
 2. Partition the disk as you like, usually it looks like this depending on the BIOS type:
 
 | Name          | Size   | Legacy                        | UEFI                                 |
@@ -32,7 +32,8 @@ git clone https://github.com/DavenderSparkle/ArchCustomInstaller
 | /dev/sda4     | Rest   | Linux Filesystem              | Linux Filesystem (becomes /dev/sda3) |
 
 3. Hit `write` and type `yes`
-4. Afterwards, scripts takes care of:
+4. Choose your BIOS type: 1) Legacy 2) UEFI
+5. Afterwards, scripts takes care of:
     * Formatting the created partitions
     * Mounting the disks on their respective mount points
     * Install necesary packages
@@ -41,16 +42,19 @@ git clone https://github.com/DavenderSparkle/ArchCustomInstaller
 
 ### Post Installation (PostInstall.sh)
 
-After entering `arch-chroot` you need to clone this repository again and `cd` into it.  
+After entering `arch-chroot` you need to `cd /ArchCustomInstaller`  
 Run the following command:
 
 ```
-./PostInstall.sh <username> <language> <hostname>
+./PostInstall.sh <username> <language> <hostname> <bios>
 ```
 ###### Parameters:
 >  `<username>`: The name of the user fot the operating system  
 >  `<language>`: The preferred language for the system environment (e.g: us, es)  
->  `<hostname>`: The hostname you wish to assign to your system
+>  `<hostname>`: The hostname you wish to assign to your system  
+>  `<bios>`: The kind of bios our system uses: 1) Legacy 2) UEFI
+
+If parameters are not provided or are incorrect, they will be requested later  
 
 Order of Execution:
 1. **Automatic user creation**: The user will be created with a home directory and added to `%wheel` group for `sudo` access
