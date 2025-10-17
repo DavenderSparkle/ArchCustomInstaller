@@ -6,6 +6,10 @@ While I'm aware that the `archinstall` tool can provide a fully automated instal
 To be honest, the main reason I prefer manual instalallation over `archinstall` is that the first time I tried it, didn't install few key components and left VM without internet connection.
 
 ## How to use
+> [!IMPORTANT]
+> This scripts are currently intended for SATA drives, feel free to modify them to modify them to match NVME/VDB format acording to your needs  
+> Soon (or later) I'll try to modify it to support more drive types
+
 ### Booting ArchLinux.iso
 By default, the Arch Linux environment does not come with Git installed. To install it, run:
 ```
